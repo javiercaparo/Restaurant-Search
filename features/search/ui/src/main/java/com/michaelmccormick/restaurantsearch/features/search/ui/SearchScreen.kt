@@ -73,7 +73,7 @@ fun SearchScreen(viewModel: SearchScreenViewModel) {
                 EmptyRestaurantsList()
             }
         }
-        SnackBar(viewState = viewState, scaffoldState = scaffoldState)
+        SnackBar(error = viewState.error, scaffoldState = scaffoldState)
     }
 }
 
@@ -180,16 +180,16 @@ private fun EmptyRestaurantsList() {
 }
 
 @Composable
-private fun SnackBar(viewState: SearchScreenViewModel.ViewState, scaffoldState: ScaffoldState) {
+private fun SnackBar(error: SearchScreenViewModel.SearchError?, scaffoldState: ScaffoldState) {
     val message = stringResource(
-        id = when (viewState.error) {
+        id = when (error) {
             SearchScreenViewModel.SearchError.GET_RESTAURANTS_FAILURE -> R.string.get_restaurants_error
             SearchScreenViewModel.SearchError.LOCATION_PERMISSION_NOT_GRANTED -> R.string.location_permission_not_granted_error
             SearchScreenViewModel.SearchError.GET_LOCATION_ERROR -> R.string.get_location_error
             else -> return
         },
     )
-    LaunchedEffect(key1 = viewState.error) {
+    LaunchedEffect(key1 = error) {
         scaffoldState.snackbarHostState.showSnackbar(message = message)
     }
 }
