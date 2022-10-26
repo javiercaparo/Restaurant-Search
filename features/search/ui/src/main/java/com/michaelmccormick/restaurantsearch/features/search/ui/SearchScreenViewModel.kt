@@ -28,18 +28,20 @@ class SearchScreenViewModel @Inject internal constructor(
     }
 
     fun onUserLocated(location: Location?) {
-        viewModelScope.launch { _state.emit(state.value.copy(error = null)) }
-        if (location == null) {
-            viewModelScope.launch { _state.emit(state.value.copy(error = SearchError.LOCATION_PERMISSION_NOT_GRANTED)) }
-        } else {
-            getPostcodeFromLocationUseCase(location)
-                .onSuccess {
-                    viewModelScope.launch { _state.emit(state.value.copy(postcode = it)) }
-                    onSearchClicked()
-                }
-                .onFailure {
-                    viewModelScope.launch { _state.emit(state.value.copy(error = SearchError.GET_LOCATION_ERROR)) }
-                }
+        viewModelScope.launch {
+            _state.emit(state.value.copy(error = null))
+            if (location == null) {
+                _state.emit(state.value.copy(error = SearchError.LOCATION_PERMISSION_NOT_GRANTED))
+            } else {
+                getPostcodeFromLocationUseCase(location)
+                    .onSuccess {
+                        _state.emit(state.value.copy(postcode = it))
+                        onSearchClicked()
+                    }
+                    .onFailure {
+                        _state.emit(state.value.copy(error = SearchError.GET_LOCATION_ERROR))
+                    }
+            }
         }
     }
 
