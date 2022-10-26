@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="postcode_text_field_label">Enter your postcode</string>
+    <string name="search_button_content_description">Search using the entered postcode</string>
+    <string name="initial_empty_restaurants_list">Enter your postcode and search for restaurants that deliver to you!</string>
+    <string name="empty_restaurants_list">Unfortunately, there are no restaurants that deliver to your postcode</string>
+    <string name="star_rating_icon_content_description">The following number is the star rating for this restaurant.</string>
+    <string name="get_restaurants_error">There was an error getting restaurants, please check your connection and try again.</string>
+    <string name="location_permission_not_granted_error">You did not grant location permission.</string>
+    <string name="get_location_error">There was an error getting your location.</string>
+</resources>
