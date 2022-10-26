@@ -43,11 +43,14 @@ class LocationRequestActivity : ComponentActivity() {
 
     @SuppressLint("MissingPermission")
     private fun getCurrentLocationAndFinish() {
-        fusedLocationClient.getCurrentLocation(Priority.PRIORITY_BALANCED_POWER_ACCURACY, CancellationTokenSource().token).addOnSuccessListener {
-            val data = Intent().apply { putExtra(LOCATION_EXTRA, it) }
-            setResult(RESULT_OK, data)
-            finishActivity()
-        }
+        fusedLocationClient.getCurrentLocation(Priority.PRIORITY_BALANCED_POWER_ACCURACY, CancellationTokenSource().token)
+            .addOnSuccessListener {
+                val data = Intent().apply { putExtra(LOCATION_EXTRA, it) }
+                setResult(RESULT_OK, data)
+                finishActivity()
+            }
+            .addOnFailureListener { finishActivity() }
+            .addOnCanceledListener { finishActivity() }
     }
 
     private fun finishActivity() {
