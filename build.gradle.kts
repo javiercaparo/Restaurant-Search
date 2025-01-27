@@ -4,6 +4,11 @@ plugins {
     id("org.jetbrains.kotlin.android") version Versions.KOTLIN apply false
     id("org.jetbrains.kotlin.jvm") version Versions.KOTLIN apply false
     id("com.google.dagger.hilt.android") version Versions.HILT apply false
+    id("io.gitlab.arturbosch.detekt") version("1.23.7")
+}
+
+repositories {
+    mavenCentral()
 }
 
 tasks.register("clean", Delete::class) {
