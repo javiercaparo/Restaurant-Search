@@ -7,9 +7,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version("1.23.7")
 }
 
-repositories {
-    mavenCentral()
-}
+// repositories block removed
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
