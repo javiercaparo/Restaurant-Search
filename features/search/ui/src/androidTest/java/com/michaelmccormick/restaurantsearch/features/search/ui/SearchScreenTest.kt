@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.michaelmccormick.restaurantsearch.features.search.ui
 
 import androidx.compose.ui.test.assertIsDisplayed
