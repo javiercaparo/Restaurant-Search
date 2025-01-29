@@ -2,7 +2,7 @@ import org.gradle.api.JavaVersion
 
 object Versions {
     const val MIN_SDK = 21
-    const val TARGET_SDK = 33
+    const val TARGET_SDK = 35
     val JAVA = JavaVersion.VERSION_11
     const val KOTLIN = "1.7.10"
     const val HILT = "2.44"
